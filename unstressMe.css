@@ -1,0 +1,75 @@
+
+body{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.newEventButton{
+  height: 50px;
+  width: 50px;
+  background-color: #ff0000;
+  border-radius: 25px;
+  text-align: center;
+  line-height: 50px;
+
+  float: right;
+  margin-top: 40px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+
+.container{
+  height: 712px;
+  width: 400px;
+}
+
+.headerBar{
+  height: 60px;
+  width: 400px;
+  background-color: #5dd2fc;
+  text-align: center;
+  line-height: 60px;
+
+  font-size: 24px;
+  font-weight: 300;
+  color: #ffffff;
+  font-family: sans-serif;
+}
+
+.contentContainer{
+  height: 652px;
+  width: 400px;
+  background-color: #eff1f4;
+  padding-top: 10px;
+}
+
+.row{
+  height: 80px;
+  width: 350px;
+  background: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.graph{
+  height: 250px;
+  width: 350px;
+  background: #ffffff;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.chooserButton{
+  height: 80px;
+  width: 250px;
+  border-radius: 40px;
+  background-color: red;
+
+  font-size: 20px;
+  color: #ffffff;
+  font-family: sans-serif;
+}
