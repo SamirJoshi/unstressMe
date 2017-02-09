@@ -27,6 +27,10 @@ body{
   font-family: sans-serif;
 }
 
+.newEventButton:active{
+  background-color: #ff688d;
+}
+
 .container{
   height: 712px;
   width: 400px;
@@ -81,7 +85,11 @@ body{
   font-family: sans-serif;
   padding-left: 10px;
   padding-right: 10px;
-  }
+}
+
+.row:active{
+  background-color: #d7d7d7;
+}
 
 .rowTime{
   height: 25px;
