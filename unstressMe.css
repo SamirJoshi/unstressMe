@@ -3,6 +3,7 @@ body{
   margin: 0;
   padding: 0;
   display: flex;
+  font-family: sans-serif;
 }
 
 .homeButton{
@@ -13,7 +14,7 @@ body{
 .newEventButton{
   height: 50px;
   width: 50px;
-  background-color: #fc5d83;
+  background-color: #004c5c;
   border-radius: 25px;
 
   color: white;
@@ -30,12 +31,13 @@ body{
 .container{
   height: 712px;
   width: 400px;
+  background:#c1b8a2;
 }
 
 .headerBar{
   height: 60px;
   width: 400px;
-  background-color: #5dd2fc;
+  background-color: #afabd4;
 
 }
 
@@ -66,7 +68,7 @@ body{
 .contentContainer{
   height: 652px;
   width: 400px;
-  background-color: #eff1f4;
+  background-color: #eae7df;
   padding-top: 10px;
 }
 
@@ -81,6 +83,7 @@ body{
   font-family: sans-serif;
   padding-left: 10px;
   padding-right: 10px;
+  border-radius: 4px;
   }
 
 .rowTime{
@@ -117,7 +120,7 @@ body{
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 20px;
-  background-color: #fc5d83;
+  background-color: 	#004c5c;
 
   text-align: center;
   line-height: 50px;
