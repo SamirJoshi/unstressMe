@@ -29,6 +29,10 @@ body{
 }
 
 .newEventButton:active{
+  background-color: #006176;
+}
+
+.newEventButton:hover{
   background-color: #00768f;
 }
 
@@ -135,6 +139,10 @@ body{
   font-size: 20px;
   color: #ffffff;
   font-family: sans-serif;
+}
+
+.chooserButton:hover {
+    background-color: #006176;
 }
 
 .evChooser{
