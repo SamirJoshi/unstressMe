@@ -5,11 +5,18 @@ body{
   display: flex;
 }
 
+.homeButton{
+  height: 50px;
+  width: 50px;
+}
+
 .newEventButton{
   height: 50px;
   width: 50px;
-  background-color: #ff0000;
+  background-color: #fc5d83;
   border-radius: 25px;
+
+  color: white;
   text-align: center;
   line-height: 50px;
 
@@ -28,11 +35,29 @@ body{
   height: 60px;
   width: 400px;
   background-color: #5dd2fc;
+
+}
+
+.title{
+  width: 240px;
+  height: 60px;
+
   text-align: center;
   line-height: 60px;
 
   font-size: 24px;
   font-weight: 300;
+  color: #ffffff;
+  font-family: sans-serif;
+}
+.headerButton{
+  width: 80px;
+  height: 60px;
+
+  text-align: center;
+  line-height: 60px;
+
+  font-size: 16px;
   color: #ffffff;
   font-family: sans-serif;
 }
@@ -64,12 +89,23 @@ body{
 }
 
 .chooserButton{
-  height: 80px;
+  height: 50px;
   width: 250px;
-  border-radius: 40px;
-  background-color: red;
+  margin-left: 75px;
+  margin-right: 75px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: #fc5d83;
 
+  text-align: center;
+  line-height: 50px;
   font-size: 20px;
   color: #ffffff;
   font-family: sans-serif;
+}
+
+.evChooser{
+  height: 452px;
+  padding-top: 200px;
 }
