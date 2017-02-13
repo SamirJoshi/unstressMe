@@ -113,6 +113,7 @@ body{
 
 .row:hover{
   background-color: #d7d7d7;
+  cursor: pointer;
 }
 
 .rowTime{
@@ -188,6 +189,10 @@ body{
   font-size: 16px;
   font-family: sans-serif;
   line-height: 45px;
+}
+
+.pastHead:hover{
+  cursor: pointer;
 }
 
 .pastHead:active{
