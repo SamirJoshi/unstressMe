@@ -41,17 +41,12 @@ body{
   text-align: center;
   line-height: 50px;
   font-family: sans-serif;
-
-
-
 }
 
-.newEventButton:active{
-  background-color: #006176;
-}
 
 .newEventButton:hover{
   background-color: #00768f;
+  cursor: pointer;
 }
 
 .container{
@@ -78,6 +73,7 @@ body{
   color: #ffffff;
   font-family: sans-serif;
 }
+
 .headerButton{
   width: 80px;
   height: 60px;
@@ -88,6 +84,10 @@ body{
   font-size: 16px;
   color: #ffffff;
   font-family: sans-serif;
+}
+
+.headerButton:hover{
+    cursor: pointer;
 }
 
 .contentContainer{
@@ -111,7 +111,7 @@ body{
   border-radius: 3px;
 }
 
-.row:active{
+.row:hover{
   background-color: #d7d7d7;
 }
 
@@ -123,6 +123,7 @@ body{
   font-family: sans-serif;
   color: #666666;
 }
+
 .rowTitle{
   height: 55px;
   width: 330px;
@@ -160,6 +161,7 @@ body{
 
 .chooserButton:hover {
     background-color: #006176;
+    cursor: pointer;
 }
 
 .evChooser{
