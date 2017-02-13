@@ -11,7 +11,7 @@ body{
   width: 50px;
 }
 
-.newEventButton{
+/*.newEventButton{
   height: 50px;
   width: 50px;
   background-color: #004c5c;
@@ -26,6 +26,24 @@ body{
   margin-right: 30px;
   margin-bottom: 10px;
   font-family: sans-serif;
+}*/
+
+.newEventButton{
+  position: fixed;
+  bottom: 10px;
+  left: 340px;
+  height: 50px;
+  width: 50px;
+  background-color: #004c5c;
+  border-radius: 25px;
+
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  font-family: sans-serif;
+
+
+
 }
 
 .newEventButton:active{
@@ -46,7 +64,6 @@ body{
   height: 60px;
   width: 400px;
   background-color: #afabd4;
-
 }
 
 .title{
@@ -151,5 +168,26 @@ body{
 }
 
 .input{
-    text-align: center;
+  text-align: center;
+}
+
+.pastEventsHeader{
+  width: 400px;
+  height: 40px;
+  margin-top: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.pastHead{
+  width: 175px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 45px;
+}
+
+.pastHead:active{
+  background-color: #e0dbd0;
 }
