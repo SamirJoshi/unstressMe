@@ -46,12 +46,8 @@ decision_events = [
     "timestamp": "Yesterday"
   },
 ]
-
+      
 whichList = "stress"
-
-function HelloWorld(){
-
-}
 
 function drawCards(ev_list, type_id){
   var eventsList = document.getElementById("prevEvents")
@@ -127,5 +123,34 @@ function showList(){
   }
 }
 
+function addToList(list) {
+    if (list == 'stress') {
+        console.log("add to stress_events")
+        var type = "Stress"
+        var name = document.getElementById("stressName").value
+        var stressLevel = document.getElementById("stressRange").value
+        var fact = document.getElementById("stressFact").value
+        var feelings = document.getElementById("stressFeeling").value
+        var fiction = document.getElementById("stressFiction").value
+        var timestamp = "Today"
+        var jsonData = {}
+        jsonData["type"] = type
+        jsonData["name"] = name
+        jsonData["stressLevel"] = stressLevel
+        jsonData["fact"] = fact
+        jsonData["feelings"] = feelings
+        jsonData["fiction"] = fiction
+        jsonData["timestamp"] = timestamp
+        stress_events.unshift(jsonData)
+        console.log(stress_events)
+    }
+    else {
+        //not implemented yet
+    }
+    alert("Your stress log has been saved.")
+    location.href='index.html'
+}
 
-showList()
+if (document.URL.endsWith("index.html")) {
+    showList()
+}

@@ -30,8 +30,8 @@ body{
 
 .newEventButton{
   position: fixed;
-  bottom: 10px;
-  left: 340px;
+  bottom: 65px;
+  left: 320px;
   height: 50px;
   width: 50px;
   background-color: #004c5c;
