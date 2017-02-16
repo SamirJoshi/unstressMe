@@ -18,8 +18,36 @@
       </table>
     </div>
     <div class="contentContainer">
-      No functionality yet
-    </div>
+      <form id="decisionForm">
+        <div class="row">
+        What's happening?
+            <div class="input">
+                <textarea class="text" id="decisionName" rows=3  placeholder="Describe the choice you're making."></textarea>
+             </div>
+         </div>
+         <div class="row">
+                Indicate your stress with the slider.
+                <div class="input">
+                    Relaxed <input id="decisionRange" type="range" min=0 max=100 size=200></input> Stressed
+                </div>
+            </div>
+            <div class="row">
+            Facts
+                <div class="input">
+                    <textarea class="text" id="decisionPro" rows=3  placeholder="What are the good things about this decision?"></textarea>
+                </div>
+            </div>
+            <div class="row">
+            Feelings
+                <div class="input">
+                    <textarea class="text" id="decisionCon" rows=3 placeholder="What are the bad things about this decision?"></textarea>
+                </div>
+            </div>
+            <div class="newEventButton"  onclick="addToList('decision')">
+            Save
+            </div>
+        </div>
+    </form>
   </div>
   <script src="unstressMe.js" type="text/javascript"> </script>
 </body>
