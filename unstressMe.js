@@ -46,7 +46,7 @@ decision_events = [
     "timestamp": "Yesterday"
   },
 ]
-      
+
 whichList = "stress"
 
 function drawCards(ev_list, type_id){
@@ -63,6 +63,7 @@ function drawCards(ev_list, type_id){
 function drawCard(ev) {
   var row = document.createElement('div')
   row.setAttribute("class", "row")
+  row.setAttribute("onclick", "location.href='showPastEvent.html'")
 
   var rowTime = document.createElement('div')
   rowTime.setAttribute("class", "rowTime")
