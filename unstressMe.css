@@ -144,6 +144,9 @@ body{
   margin-right: 25px;
   border-radius: 3px;
 }
+.graphLabel{
+  margin-left: 25px;
+}
 
 .chooserButton{
   height: 50px;
