@@ -202,7 +202,7 @@ body{
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 20px;
-  background-color: 	#F44336;
+  background-color: 	#004c5c;
 
   text-align: center;
   line-height: 50px;
@@ -212,7 +212,7 @@ body{
 }
 
 .chooserButton:hover {
-    background-color: #D32F2F;
+    background-color: #006176;
     cursor: pointer;
 }
 
@@ -224,6 +224,7 @@ body{
   font-size: 16px;
   color: #5d5d5d;
   font-family: sans-serif;
+  text-align:center;
 }
 
 .evChooser{
