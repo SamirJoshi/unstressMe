@@ -27,23 +27,6 @@ body{
   margin-bottom: 20px;
   font-family: sans-serif;
 }
-/*
-.newEventButton{
-  position: fixed;
-  bottom: 65px;
-  left: 320px;
-  height: 50px;
-  width: 50px;
-  background-color: #004c5c;
-  border-radius: 25px;
-
-  color: white;
-  text-align: center;
-  line-height: 50px;
-  font-family: sans-serif;
-}
-*/
-
 
 .newEventButton:hover{
   background-color: #D32F2F;
@@ -115,7 +98,7 @@ body{
 .pastRow{
   height: 625px;
   width: 330px;
-  background: #ffffff;
+  background: #f5f5f5;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 25px;
@@ -135,14 +118,44 @@ body{
 
 .pastHeader{
   color: #666666;
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.pastFieldText{
+  color: #000000;
   font-size: 16px;
   margin-bottom: 5px;
   margin-top: 5px;
+  margin-left: 10px;
 }
 .pastField{
   margin-top: 10px;
   margin-bottom: 10px;
-  height: 50px;
+  margin-left: 10px;
+  height: 60px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  background-color: #ffffff;
+}
+
+.pastFieldStress{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  height: 160px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  background-color: #ffffff;
+}
+
+.pastFieldBlank{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  height: 60px;
 }
 
 .row:hover{
@@ -189,7 +202,7 @@ body{
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 20px;
-  background-color: 	#004c5c;
+  background-color: 	#F44336;
 
   text-align: center;
   line-height: 50px;
@@ -199,8 +212,18 @@ body{
 }
 
 .chooserButton:hover {
-    background-color: #006176;
+    background-color: #D32F2F;
     cursor: pointer;
+}
+
+.chooserHeaderText {
+  width: 250px;
+  margin-left: 75px;
+  margin-right: 75px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #5d5d5d;
+  font-family: sans-serif;
 }
 
 .evChooser{
@@ -240,5 +263,5 @@ body{
 }
 
 .pastHead:active{
-  background-color: #e0dbd0;
+  background-color: #dcdcdc;
 }
