@@ -14,7 +14,7 @@ body{
 .newEventButton{
   height: 50px;
   width: 50px;
-  background-color: #F44336;
+  background-color: #004c5c;
   border-radius: 25px;
 
   color: white;
@@ -46,7 +46,7 @@ body{
 
 
 .newEventButton:hover{
-  background-color: #D32F2F;
+  background-color: #006176;
   cursor: pointer;
 }
 
