@@ -104,10 +104,10 @@ function showList(){
     decisionCards.parentNode.removeChild(decisionCards)
 
     var stressHeader = document.getElementById("stressHeader")
-    stressHeader.style.background = "#c1b8a2"
+    stressHeader.style.background = "#dcdcdc"
 
     var decisionHeader = document.getElementById("decisionHeader")
-    decisionHeader.style.background = "#eae7df"
+    decisionHeader.style.background = "#f5f5f5"
   }
   else{
     console.log("switching to decision list")
@@ -117,10 +117,10 @@ function showList(){
     stressCards.parentNode.removeChild(stressCards)
 
     var stressHeader = document.getElementById("stressHeader")
-    stressHeader.style.background = "#eae7df"
+    stressHeader.style.background = "#f5f5f5"
 
     var decisionHeader = document.getElementById("decisionHeader")
-    decisionHeader.style.background = "#c1b8a2"
+    decisionHeader.style.background = "#dcdcdc"
   }
 }
 
