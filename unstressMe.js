@@ -63,7 +63,7 @@ function setCookie() {
 function getCookie() {
   var json_strings = document.cookie.split("||")
   var stress_str = json_strings[0].substring(13)
-  var decision_str = json_strings[1
+  var decision_str = json_strings[1]
   stress_events = JSON.parse(stress_str)
   decision_events = JSON.parse(decision_str)
 }
