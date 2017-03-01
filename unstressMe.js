@@ -60,6 +60,14 @@ function setCookie() {
   document.cookie = cookie_str
 }
 
+function getCookie() {
+  var json_strings = document.cookie.split("||")
+  var stress_str = json_strings[0].substring(13)
+  var decision_str = json_strings[1
+  stress_events = JSON.parse(stress_str)
+  decision_events = JSON.parse(decision_str)
+}
+
 function drawCards(ev_list, type_id){
   var eventsList = document.getElementById("prevEvents")
   var sEvents = document.createElement('div')
@@ -108,13 +116,10 @@ function switchLists(newList){
 }
 
 function showList(){
-  var json_strings = document.cookie.split("||")
-  var stress_str = json_strings[0].substring(13)
-  var decision_str = json_strings[1]
-
+  getCookie()
   if(whichList == 'stress'){
     console.log("switching to stress list")
-    stress_events = JSON.parse(stress_str)
+    
     drawCards(stress_events, "stress")
     var decisionCards = document.getElementById("decision")
     decisionCards.parentNode.removeChild(decisionCards)
@@ -127,7 +132,6 @@ function showList(){
   }
   else{
     console.log("switching to decision list")
-    decision_events = JSON.parse(decision_str)
     drawCards(decision_events, "decision")
     console.log("drew new cards")
     var stressCards = document.getElementById("stress")
@@ -159,6 +163,7 @@ function addToList(list) {
         jsonData["feelings"] = feelings
         jsonData["fiction"] = fiction
         jsonData["timestamp"] = timestamp
+        getCookie()
         stress_events.unshift(jsonData)
         setCookie()
         alert("Your stress log has been saved.")
@@ -178,6 +183,7 @@ function addToList(list) {
         jsonData["pro"] = pro
         jsonData["con"] = con
         jsonData["timestamp"] = timestamp
+        getCookie()
         decision_events.unshift(jsonData)
         setCookie()
         alert("Your decision log has been saved.")
