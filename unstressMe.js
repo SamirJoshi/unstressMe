@@ -6,7 +6,7 @@ stress_events = [
     "fact": "I did well",
     "feelings": "I'm happy",
     "fiction": "I'll do well on every test",
-    "timestamp": "Today"
+    "timestamp": new Date(2017, 2, 1)
   },
   {
     "type": "Stress",
@@ -15,16 +15,16 @@ stress_events = [
     "fact": "I have an exciting opportunity",
     "feelings": "I'm nervous and anxious",
     "fiction": "If I don't do well I'll never get a job",
-    "timestamp": "Yesterday"
+    "timestamp": new Date(2017, 1, 28)
   },
   {
     "type": "Stress",
     "name": "Took a midterm",
-    "stressLevel": "20",
+    "stressLevel": "50",
     "fact": "The test was fine",
     "feelings": "I'm pleased that the test went well",
     "fiction": "I didn't do well compared to other students",
-    "timestamp": "2 Days Ago"
+    "timestamp": new Date(2017, 1, 27)
   },
 ]
 
@@ -35,7 +35,7 @@ decision_events = [
     "pros": "good coffee",
     "cons": "kinda far + money",
     "stressLevel": "75",
-    "timestamp": "Today"
+    "timestamp": new Date(2017, 2, 1)
   },
   {
     "type": "Decision",
@@ -43,7 +43,7 @@ decision_events = [
     "pros": "health",
     "cons": "y tho",
     "stressLevel": "55",
-    "timestamp": "Yesterday"
+    "timestamp": new Date(2017, 1, 28)
   },
 ]
 
@@ -72,7 +72,7 @@ function drawCards(ev_list, type_id){
   var eventsList = document.getElementById("prevEvents")
   var sEvents = document.createElement('div')
   sEvents.setAttribute("id", type_id)
-  console.log("HEREEEE")
+  //console.log("HEREEEE")
   for(i=0; i < ev_list.length && i < 3; i++){
     sEvents.appendChild(drawCard(ev_list[i]))
   }
@@ -86,7 +86,8 @@ function drawCard(ev) {
 
   var rowTime = document.createElement('div')
   rowTime.setAttribute("class", "rowTime")
-  var rTimeText = document.createTextNode(ev.timestamp + " - " + ev.type)
+  var datetime = new Date(ev.timestamp)
+  var rTimeText = document.createTextNode(datetime.toDateString() + " - " + ev.type)
   rowTime.appendChild(rTimeText)
 
   var rowTitle = document.createElement('div')
@@ -154,7 +155,7 @@ function addToList(list) {
         var fact = document.getElementById("stressFact").value
         var feelings = document.getElementById("stressFeeling").value
         var fiction = document.getElementById("stressFiction").value
-        var timestamp = "Today"
+        var timestamp = new Date()
         var jsonData = {}
         jsonData["type"] = type
         jsonData["name"] = name
@@ -175,7 +176,7 @@ function addToList(list) {
         var decisionLevel = document.getElementById("decisionRange").value
         var pro = document.getElementById("decisionPro").value
         var con = document.getElementById("decisionCon").value
-        var timestamp = "Today"
+        var timestamp = new Date()
         var jsonData = {}
         jsonData["type"] = type
         jsonData["name"] = name
@@ -195,6 +196,40 @@ function addToList(list) {
 }
 
 if (document.URL.endsWith("index.html")) {
-    showList()
+  window.onload = function () {
+    var points = []
+    for(i=0; i < stress_events.length; i++){
+      var point = {}
+      point["x"] = new Date(stress_events[i].timestamp)
+      point["y"] = parseInt(stress_events[i].stressLevel)
+      points.unshift(point)
+    }
+    console.log(points)
+    var chart = new CanvasJS.Chart("chartContainer", {
+      theme: "theme2",
+      title:{
+        text: "My Stress History"              
+      },
+      animationEnabled: true,
+      axisX : {
+        valueFormatString: "DD/MMM",
+        interval: 1,
+        intervalType: "day"
+      },
+      axisY : {
+        minimum: 0,
+        maximum: 100 
+      },
+      data: [              
+      {
+        type: "line",
+        dataPoints: points
+      }
+      ]
+    });
+    console.log(chart)
+    chart.render();
+  }
+  showList()
 }
 
