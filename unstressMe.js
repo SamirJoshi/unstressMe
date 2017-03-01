@@ -210,14 +210,14 @@ function addToList(list) {
         console.log("add to decision_events")
         var type = "Decision"
         var name = document.getElementById("decisionName").value
-        var decisionLevel = document.getElementById("decisionRange").value
+        var stressLevel = document.getElementById("decisionRange").value
         var pro = document.getElementById("decisionPro").value
         var con = document.getElementById("decisionCon").value
         var timestamp = new Date()
         var jsonData = {}
         jsonData["type"] = type
         jsonData["name"] = name
-        jsonData["decisionLevel"] = decisionLevel
+        jsonData["stressLevel"] = stressLevel
         jsonData["pro"] = pro
         jsonData["con"] = con
         jsonData["timestamp"] = timestamp
