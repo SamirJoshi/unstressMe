@@ -121,6 +121,7 @@ function showList(){
   if(whichList == 'stress'){
     console.log("switching to stress list")
     
+    drawGraph(stress_events)
     drawCards(stress_events, "stress")
     var decisionCards = document.getElementById("decision")
     decisionCards.parentNode.removeChild(decisionCards)
@@ -133,6 +134,7 @@ function showList(){
   }
   else{
     console.log("switching to decision list")
+    drawGraph(decision_events)
     drawCards(decision_events, "decision")
     console.log("drew new cards")
     var stressCards = document.getElementById("stress")
@@ -144,6 +146,41 @@ function showList(){
     var decisionHeader = document.getElementById("decisionHeader")
     decisionHeader.style.background = "#dcdcdc"
   }
+}
+
+function drawGraph(ev_list) {
+  var points = []
+  for(i=0; i < ev_list.length; i++){
+    var point = {}
+    point["x"] = new Date(ev_list[i].timestamp)
+    point["y"] = parseInt(ev_list[i].stressLevel)
+    points.unshift(point)
+  }
+  //console.log(points)
+  var chart = new CanvasJS.Chart("chartContainer", {
+    theme: "theme2",
+    title:{
+      text: "My Stress History"              
+    },
+    animationEnabled: true,
+    axisX : {
+      valueFormatString: "DD/MMM",
+      interval: 1,
+      intervalType: "day"
+    },
+    axisY : {
+      minimum: 0,
+      maximum: 100 
+    },
+    data: [              
+    {
+      type: "line",
+      dataPoints: points
+    }
+    ]
+  });
+  //console.log(chart)
+  chart.render();
 }
 
 function addToList(list) {
@@ -196,40 +233,6 @@ function addToList(list) {
 }
 
 if (document.URL.endsWith("index.html")) {
-  window.onload = function () {
-    var points = []
-    for(i=0; i < stress_events.length; i++){
-      var point = {}
-      point["x"] = new Date(stress_events[i].timestamp)
-      point["y"] = parseInt(stress_events[i].stressLevel)
-      points.unshift(point)
-    }
-    //console.log(points)
-    var chart = new CanvasJS.Chart("chartContainer", {
-      theme: "theme2",
-      title:{
-        text: "My Stress History"              
-      },
-      animationEnabled: true,
-      axisX : {
-        valueFormatString: "DD/MMM",
-        interval: 1,
-        intervalType: "day"
-      },
-      axisY : {
-        minimum: 0,
-        maximum: 100 
-      },
-      data: [              
-      {
-        type: "line",
-        dataPoints: points
-      }
-      ]
-    });
-    //console.log(chart)
-    chart.render();
-  }
   showList()
 }
 
