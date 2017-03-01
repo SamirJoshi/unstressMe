@@ -1,7 +1,7 @@
 stress_events = [
   {
     "type": "Stress",
-    "name": "Got my midterm back yesterday",
+    "name": "Got my midterm back",
     "stressLevel": "20",
     "fact": "I did well",
     "feelings": "I'm happy",
@@ -10,20 +10,20 @@ stress_events = [
   },
   {
     "type": "Stress",
-    "name": "Idk",
+    "name": "Job interview",
     "stressLevel": "100",
-    "fact": "I did well",
-    "feelings": "I'm happy",
-    "fiction": "I'll do well on every test",
+    "fact": "I have an exciting opportunity",
+    "feelings": "I'm nervous and anxious",
+    "fiction": "If I don't do well I'll never get a job",
     "timestamp": "Yesterday"
   },
   {
     "type": "Stress",
-    "name": "Took my midterm back yesterday",
+    "name": "Took a midterm",
     "stressLevel": "20",
-    "fact": "I did well",
-    "feelings": "I'm happy",
-    "fiction": "I'll do well on every test",
+    "fact": "The test was fine",
+    "feelings": "I'm pleased that the test went well",
+    "fiction": "I didn't do well compared to other students",
     "timestamp": "2 Days Ago"
   },
 ]
@@ -42,19 +42,30 @@ decision_events = [
     "name": "Do I gym?",
     "pros": "health",
     "cons": "y tho",
-    "stressLevel": "95",
+    "stressLevel": "55",
     "timestamp": "Yesterday"
   },
 ]
 
 whichList = "stress"
 
+if (document.cookie == "") {
+  setCookie()
+}
+
+function setCookie() {
+  var stress_str = JSON.stringify(stress_events)
+  var decision_str = JSON.stringify(decision_events)
+  var cookie_str = "json_strings=" + stress_str + "||" + decision_str
+  document.cookie = cookie_str
+}
+
 function drawCards(ev_list, type_id){
   var eventsList = document.getElementById("prevEvents")
   var sEvents = document.createElement('div')
   sEvents.setAttribute("id", type_id)
   console.log("HEREEEE")
-  for(i=0; i < ev_list.length; i++){
+  for(i=0; i < ev_list.length && i < 3; i++){
     sEvents.appendChild(drawCard(ev_list[i]))
   }
   eventsList.appendChild(sEvents)
@@ -97,8 +108,13 @@ function switchLists(newList){
 }
 
 function showList(){
+  var json_strings = document.cookie.split("||")
+  var stress_str = json_strings[0].substring(13)
+  var decision_str = json_strings[1]
+
   if(whichList == 'stress'){
     console.log("switching to stress list")
+    stress_events = JSON.parse(stress_str)
     drawCards(stress_events, "stress")
     var decisionCards = document.getElementById("decision")
     decisionCards.parentNode.removeChild(decisionCards)
@@ -111,6 +127,7 @@ function showList(){
   }
   else{
     console.log("switching to decision list")
+    decision_events = JSON.parse(decision_str)
     drawCards(decision_events, "decision")
     console.log("drew new cards")
     var stressCards = document.getElementById("stress")
@@ -143,15 +160,35 @@ function addToList(list) {
         jsonData["fiction"] = fiction
         jsonData["timestamp"] = timestamp
         stress_events.unshift(jsonData)
-        console.log(stress_events)
+        setCookie()
+        alert("Your stress log has been saved.")
     }
-    else {
-        //not implemented yet
+    else if (list == 'decision') {
+        console.log("add to decision_events")
+        var type = "Decision"
+        var name = document.getElementById("decisionName").value
+        var decisionLevel = document.getElementById("decisionRange").value
+        var pro = document.getElementById("decisionPro").value
+        var con = document.getElementById("decisionCon").value
+        var timestamp = "Today"
+        var jsonData = {}
+        jsonData["type"] = type
+        jsonData["name"] = name
+        jsonData["decisionLevel"] = decisionLevel
+        jsonData["pro"] = pro
+        jsonData["con"] = con
+        jsonData["timestamp"] = timestamp
+        decision_events.unshift(jsonData)
+        setCookie()
+        alert("Your decision log has been saved.")
     }
-    alert("Your stress log has been saved.")
+    else
+      console.log("Something's wrong with saving logs")
+    
     location.href='index.html'
 }
 
 if (document.URL.endsWith("index.html")) {
     showList()
 }
+
