@@ -6,7 +6,7 @@ stress_events = [
     "fact": "I did well",
     "feelings": "I'm happy",
     "fiction": "I'll do well on every test",
-    "timestamp": new Date(2017, 2, 1)
+    "timestamp": new Date(2017, 1, 28)
   },
   {
     "type": "Stress",
@@ -15,7 +15,7 @@ stress_events = [
     "fact": "I have an exciting opportunity",
     "feelings": "I'm nervous and anxious",
     "fiction": "If I don't do well I'll never get a job",
-    "timestamp": new Date(2017, 1, 28)
+    "timestamp": new Date(2017, 1, 27)
   },
   {
     "type": "Stress",
@@ -24,7 +24,7 @@ stress_events = [
     "fact": "The test was fine",
     "feelings": "I'm pleased that the test went well",
     "fiction": "I didn't do well compared to other students",
-    "timestamp": new Date(2017, 1, 27)
+    "timestamp": new Date(2017, 1, 26)
   },
 ]
 
@@ -35,7 +35,7 @@ decision_events = [
     "pros": "good coffee",
     "cons": "kinda far + money",
     "stressLevel": "75",
-    "timestamp": new Date(2017, 2, 1)
+    "timestamp": new Date(2017, 1, 28)
   },
   {
     "type": "Decision",
@@ -43,7 +43,7 @@ decision_events = [
     "pros": "health",
     "cons": "y tho",
     "stressLevel": "55",
-    "timestamp": new Date(2017, 1, 28)
+    "timestamp": new Date(2017, 1, 27)
   },
 ]
 
@@ -204,7 +204,7 @@ if (document.URL.endsWith("index.html")) {
       point["y"] = parseInt(stress_events[i].stressLevel)
       points.unshift(point)
     }
-    console.log(points)
+    //console.log(points)
     var chart = new CanvasJS.Chart("chartContainer", {
       theme: "theme2",
       title:{
@@ -227,7 +227,7 @@ if (document.URL.endsWith("index.html")) {
       }
       ]
     });
-    console.log(chart)
+    //console.log(chart)
     chart.render();
   }
   showList()
