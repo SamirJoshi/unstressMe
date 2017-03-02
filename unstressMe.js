@@ -59,7 +59,7 @@ if (document.cookie == "") {
 function setCookie() {
   var stress_str = JSON.stringify(stress_events)
   var decision_str = JSON.stringify(decision_events)
-  var currEv_str = toString(current_event)
+  var currEv_str = current_event.toString()
   var cookie_str = "json_strings=" + stress_str + "||" + decision_str + "||" + whichList + "||" + currEv_str
   console.log("cookie_str:", cookie_str)
   document.cookie = cookie_str
