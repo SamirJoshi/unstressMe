@@ -72,7 +72,7 @@ function getCookie() {
   var decision_str = json_strings[1]
   whichList = json_strings[2]
   var currEv_str = json_strings[3]
-  console.log("W:", whichList_str, ", CE:", currEv_str, ", DS:", decision_str)
+  console.log("W:", whichList, ", CE:", currEv_str, ", DS:", decision_str)
   stress_events = JSON.parse(stress_str)
   decision_events = JSON.parse(decision_str)
   current_event = parseInt(currEv_str)
