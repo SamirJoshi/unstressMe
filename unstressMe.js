@@ -59,7 +59,7 @@ if (document.cookie == "") {
 function setCookie() {
   var stress_str = JSON.stringify(stress_events)
   var decision_str = JSON.stringify(decision_events)
-  var currEv_str = pfaseInt(current_event)
+  var currEv_str = toString(current_event)
   var cookie_str = "json_strings=" + stress_str + "||" + decision_str + "||" + whichList + "||" + currEv_str
   console.log("cookie_str:", cookie_str)
   document.cookie = cookie_str
@@ -70,13 +70,12 @@ function getCookie() {
   console.log("JS S:", json_strings)
   var stress_str = json_strings[0].substring(13)
   var decision_str = json_strings[1]
-  var whichList_str = json_strings[2]
+  whichList = json_strings[2]
   var currEv_str = json_strings[3]
   console.log("W:", whichList_str, ", CE:", currEv_str, ", DS:", decision_str)
   stress_events = JSON.parse(stress_str)
   decision_events = JSON.parse(decision_str)
-  whichList = whichList_str
-  current_event = currEv_str
+  current_event = parseInt(currEv_str)
 }
 
 function drawCards(ev_list, type_id){
