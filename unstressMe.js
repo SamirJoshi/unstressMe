@@ -59,9 +59,8 @@ if (document.cookie == "") {
 function setCookie() {
   var stress_str = JSON.stringify(stress_events)
   var decision_str = JSON.stringify(decision_events)
-  var whichList_str = JSON.stringify(whichList)
-  var currEv_str = JSON.stringify(current_event)
-  var cookie_str = "json_strings=" + stress_str + "||" + decision_str + "||" + whichList + "||" + current_event
+  var currEv_str = pfaseInt(current_event)
+  var cookie_str = "json_strings=" + stress_str + "||" + decision_str + "||" + whichList + "||" + currEv_str
   console.log("cookie_str:", cookie_str)
   document.cookie = cookie_str
 }
@@ -243,7 +242,7 @@ function showPastEv(){
 
     var pastField2 = document.createElement('div')
     pastField2.setAttribute("class", "pastField")
-    var pastHeader2 = document.create('div')
+    var pastHeader2 = document.createElement('div')
     pastHeader2.setAttribute("class", "pastHeader")
     var headerText2 = document.createTextNode("Cons")
     pastHeader2.appendChild(headerText2)
