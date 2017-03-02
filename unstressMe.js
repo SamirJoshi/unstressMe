@@ -47,6 +47,9 @@ decision_events = [
   },
 ]
 
+current_event = 0
+current_type = 'Stress'
+
 whichList = "stress"
 
 if (document.cookie == "") {
@@ -56,16 +59,25 @@ if (document.cookie == "") {
 function setCookie() {
   var stress_str = JSON.stringify(stress_events)
   var decision_str = JSON.stringify(decision_events)
-  var cookie_str = "json_strings=" + stress_str + "||" + decision_str
+  var whichList_str = JSON.stringify(whichList)
+  var currEv_str = JSON.stringify(current_event)
+  var cookie_str = "json_strings=" + stress_str + "||" + decision_str + "||" + whichList + "||" + current_event
+  console.log("cookie_str:", cookie_str)
   document.cookie = cookie_str
 }
 
 function getCookie() {
   var json_strings = document.cookie.split("||")
+  console.log("JS S:", json_strings)
   var stress_str = json_strings[0].substring(13)
   var decision_str = json_strings[1]
+  var whichList_str = json_strings[2]
+  var currEv_str = json_strings[3]
+  console.log("W:", whichList_str, ", CE:", currEv_str, ", DS:", decision_str)
   stress_events = JSON.parse(stress_str)
   decision_events = JSON.parse(decision_str)
+  whichList = whichList_str
+  current_event = currEv_str
 }
 
 function drawCards(ev_list, type_id){
@@ -74,14 +86,17 @@ function drawCards(ev_list, type_id){
   sEvents.setAttribute("id", type_id)
   //console.log("HEREEEE")
   for(i=0; i < ev_list.length && i < 3; i++){
-    sEvents.appendChild(drawCard(ev_list[i]))
+    sEvents.appendChild(drawCard(ev_list[i], i))
   }
   eventsList.appendChild(sEvents)
 }
 
-function drawCard(ev) {
+function drawCard(ev, i) {
   var row = document.createElement('div')
   row.setAttribute("class", "row")
+  // row.setAttribute("onclick", "location.href='showPastEvent.html'")
+  current_event = i
+  current_type = ev.type
   row.setAttribute("onclick", "location.href='showPastEvent.html'")
 
   var rowTime = document.createElement('div')
@@ -105,22 +120,25 @@ function switchLists(newList){
   if(newList == 'stress'){
     if(whichList != 'stress'){
       whichList = "stress"
+      setCookie()
       showList()
     }
   }
   else{
     if(whichList != 'decision'){
       whichList = "decision"
+      setCookie()
       showList()
     }
   }
+  console.log("whichlist:", whichList)
 }
 
 function showList(){
   getCookie()
   if(whichList == 'stress'){
     console.log("switching to stress list")
-    
+
     drawGraph(stress_events)
     drawCards(stress_events, "stress")
     var decisionCards = document.getElementById("decision")
@@ -148,6 +166,94 @@ function showList(){
   }
 }
 
+function showPastEv(){
+  getCookie()
+  var ev = null
+  console.log("whichlist in showPastEv:", whichList)
+  if(whichList == "stress"){
+    ev = stress_events[current_event]
+    console.log("HERE IN STRESS")
+  }
+  else{
+    ev = decision_events[current_event]
+    console.log("HERE IN DEC")
+  }
+  console.log("EV", ev)
+  var pastCont = document.getElementById("pastContainer")
+  var pastStressType = document.getElementById("pastType")
+  var pstText = document.createTextNode(current_type)
+  pastStressType.appendChild(pstText)
+  var pastName = document.getElementById("pastFieldName")
+  var nameText = document.createTextNode(ev.name)
+  // console.log("NAMETEXT:", nameText)
+  // console.log("PASTNAME:", pastName)
+  pastName.appendChild(nameText)
+
+  // console.log("PASTNAME:", pastName)
+  var pastStress = document.getElementById("pastFieldStress")
+  var stressText= document.createTextNode(ev.stressLevel)
+  pastStress.appendChild(stressText)
+
+
+  if(ev.type == "Stress"){
+    var pastField1 = document.createElement('div')
+    pastField1.setAttribute("class", "pastField")
+    var pastHeader1 = document.createElement('div')
+    pastHeader1.setAttribute("class", "pastHeader")
+    var headerText1 = document.createTextNode("Fact")
+    pastHeader1.appendChild(headerText1)
+    pastField1.appendChild(pastHeader1)
+    var text1 = document.createTextNode(ev.fact)
+    pastField1.appendChild(text1)
+    pastCont.appendChild(pastField1)
+
+    var pastField2 = document.createElement('div')
+    pastField2.setAttribute("class", "pastField")
+    var pastHeader2 = document.createElement('div')
+    pastHeader2.setAttribute("class", "pastHeader")
+    var headerText2 = document.createTextNode("Fiction")
+    pastHeader2.appendChild(headerText2)
+    pastField2.appendChild(pastHeader2)
+    var text2 = document.createTextNode(ev.fiction)
+    pastField2.appendChild(text2)
+    pastCont.appendChild(pastField2)
+
+    var pastField3 = document.createElement('div')
+    pastField3.setAttribute("class", "pastField")
+    var pastHeader3 = document.createElement('div')
+    pastHeader3.setAttribute("class", "pastHeader")
+    var headerText3 = document.createTextNode("Feelings")
+    pastHeader3.appendChild(headerText3)
+    pastField3.appendChild(pastHeader3)
+    var text3 = document.createTextNode(ev.feelings)
+    pastField3.appendChild(text3)
+    pastCont.appendChild(pastField3)
+  }
+  else{
+    var pastField1 = document.createElement('div')
+    pastField1.setAttribute("class", "pastField")
+    var pastHeader1 = document.create('div')
+    pastHeader1.setAttribute("class", "pastHeader")
+    var headerText1 = document.createTextNode("Pros")
+    pastHeader1.appendChild(headerText1)
+    pastField1.appendChild(pastHeader1)
+    var text1 = document.createTextNode(ev.pros)
+    pastField1.appendChild(text1)
+    pastCont.appendChild(pastField1)
+
+    var pastField2 = document.createElement('div')
+    pastField2.setAttribute("class", "pastField")
+    var pastHeader2 = document.create('div')
+    pastHeader2.setAttribute("class", "pastHeader")
+    var headerText2 = document.createTextNode("Cons")
+    pastHeader2.appendChild(headerText2)
+    pastField2.appendChild(pastHeader2)
+    var text2 = document.createTextNode(ev.cons)
+    pastField2.appendChild(text2)
+    pastCont.appendChild(pastField2)
+  }
+}
+
 function drawGraph(ev_list) {
   var points = []
   for(i=0; i < ev_list.length; i++){
@@ -160,7 +266,7 @@ function drawGraph(ev_list) {
   var chart = new CanvasJS.Chart("chartContainer", {
     theme: "theme2",
     title:{
-      text: "My Stress History"              
+      text: "My Stress History"
     },
     animationEnabled: true,
     axisX : {
@@ -170,9 +276,9 @@ function drawGraph(ev_list) {
     },
     axisY : {
       minimum: 0,
-      maximum: 100 
+      maximum: 100
     },
-    data: [              
+    data: [
     {
       type: "line",
       dataPoints: points
@@ -228,7 +334,7 @@ function addToList(list) {
     }
     else
       console.log("Something's wrong with saving logs")
-    
+
     location.href='index.html'
 }
 
@@ -236,3 +342,6 @@ if (document.URL.endsWith("index.html")) {
   showList()
 }
 
+if (document.URL.endsWith("showPastEvent.html")) {
+  showPastEv()
+}
