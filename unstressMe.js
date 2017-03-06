@@ -92,10 +92,11 @@ function drawCards(ev_list, type_id){
 function drawCard(ev, i) {
   var row = document.createElement('div')
   row.setAttribute("class", "row")
+  row.setAttribute("id", i.toString())
   // row.setAttribute("onclick", "location.href='showPastEvent.html'")
-  current_event = i
+  // current_event = i
   current_type = ev.type
-  row.setAttribute("onclick", "location.href='showPastEvent.html'")
+  row.setAttribute("onclick", "current_event = i; location.href='showPastEvent.html';")
 
   var rowTime = document.createElement('div')
   rowTime.setAttribute("class", "rowTime")
@@ -230,7 +231,7 @@ function showPastEv(){
   else{
     var pastField1 = document.createElement('div')
     pastField1.setAttribute("class", "pastField")
-    var pastHeader1 = document.create('div')
+    var pastHeader1 = document.createElement('div')
     pastHeader1.setAttribute("class", "pastHeader")
     var headerText1 = document.createTextNode("Pros")
     pastHeader1.appendChild(headerText1)
