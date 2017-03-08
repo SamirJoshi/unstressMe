@@ -134,10 +134,11 @@ function switchLists(newList){
 
 function showList(){
   getCookie()
+  drawGraph()
   if(whichList == 'stress'){
     console.log("switching to stress list")
 
-    drawGraph(stress_events)
+    //drawGraph(stress_events)
     drawCards(stress_events, "stress")
     var decisionCards = document.getElementById("decision")
     if (decisionCards != null) {
@@ -152,7 +153,7 @@ function showList(){
   }
   else{
     console.log("switching to decision list")
-    drawGraph(decision_events)
+    //drawGraph(decision_events)
     drawCards(decision_events, "decision")
     console.log("drew new cards")
     var stressCards = document.getElementById("stress")
@@ -269,13 +270,20 @@ function showPastEv(){
   }
 }
 
-function drawGraph(ev_list) {
-  var points = []
-  for(i=0; i < ev_list.length; i++){
+function drawGraph() {
+  var stressPoints = []
+  for(i=0; i < stress_events.length; i++){
     var point = {}
-    point["x"] = new Date(ev_list[i].timestamp)
-    point["y"] = parseInt(ev_list[i].stressLevel)
-    points.unshift(point)
+    point["x"] = new Date(stress_events[i].timestamp)
+    point["y"] = parseInt(stress_events[i].stressLevel)
+    stressPoints.unshift(point)
+  }
+  var decisionPoints = []
+  for(i=0; i < decision_events.length; i++){
+    var point = {}
+    point["x"] = new Date(decision_events[i].timestamp)
+    point["y"] = parseInt(decision_events[i].stressLevel)
+    decisionPoints.unshift(point)
   }
   //console.log(points)
   var chart = new CanvasJS.Chart("chartContainer", {
@@ -296,10 +304,32 @@ function drawGraph(ev_list) {
     },
     data: [
     {
-      type: "line",
-      dataPoints: points
+      type: "line", 
+      name: "Stress",
+      markerType: "circle",
+      showInLegend: true,
+      dataPoints: stressPoints
+    },
+    {
+        type: "line",
+        name: "Decision",
+        markerType: "square",
+        showInLegend: true,
+        dataPoints: decisionPoints
     }
     ]
+    legend:{
+            cursor:"pointer",
+            itemclick:function(e){
+              if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+              	e.dataSeries.visible = false;
+              }
+              else{
+                e.dataSeries.visible = true;
+              }
+              chart.render();
+            }
+        }
   });
   //console.log(chart)
   chart.render();
