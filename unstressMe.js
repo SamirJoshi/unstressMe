@@ -317,7 +317,7 @@ function drawGraph() {
         showInLegend: true,
         dataPoints: decisionPoints
     }
-    ]
+    ],
     legend:{
             cursor:"pointer",
             itemclick:function(e){
