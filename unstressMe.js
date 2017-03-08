@@ -131,7 +131,7 @@ function switchLists(newList){
 
 function showList(){
   getCookie()
-  drawGraph()
+  //drawGraph()
   if(whichList == 'stress'){
     console.log("switching to stress list")
 
@@ -373,6 +373,7 @@ function addToList(list) {
 
 if (document.URL.endsWith("index.html")) {
   showList()
+  drawGraph();
 }
 
 if (document.URL.endsWith("showPastEvent.html")) {
