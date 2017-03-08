@@ -96,7 +96,7 @@ function drawCard(ev, i) {
   // row.setAttribute("onclick", "location.href='showPastEvent.html'")
   // current_event = i
   //current_type = ev.type
-  row.setAttribute("onclick", "current_event=" + i + "; location.href='showPastEvent.html';")
+  row.setAttribute("onclick", "current_event=" + i + "; setCookie(); location.href='showPastEvent.html';")
 
   var rowTime = document.createElement('div')
   rowTime.setAttribute("class", "rowTime")
