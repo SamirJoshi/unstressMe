@@ -63,18 +63,16 @@ function setCookie() {
   var decision_str = JSON.stringify(decision_events)
   var currEv_str = current_event.toString()
   var cookie_str = "json_strings=" + stress_str + "||" + decision_str + "||" + whichList + "||" + currEv_str
-  console.log("cookie_str:", cookie_str)
   document.cookie = cookie_str
 }
 
 function getCookie() {
   var json_strings = document.cookie.split("||")
-  console.log("JS S:", json_strings)
   var stress_str = json_strings[0].substring(13)
   var decision_str = json_strings[1]
   whichList = json_strings[2]
   var currEv_str = json_strings[3]
-  console.log("W:", whichList, ", CE:", currEv_str, ", DS:", decision_str)
+  //console.log("W:", whichList, ", CE:", currEv_str, ", DS:", decision_str)
   stress_events = JSON.parse(stress_str)
   decision_events = JSON.parse(decision_str)
   current_event = parseInt(currEv_str)
@@ -84,7 +82,6 @@ function drawCards(ev_list, type_id){
   var eventsList = document.getElementById("prevEvents")
   var sEvents = document.createElement('div')
   sEvents.setAttribute("id", type_id)
-  //console.log("HEREEEE")
   for(i=0; i < ev_list.length && i < 3; i++){
     sEvents.appendChild(drawCard(ev_list[i], i))
   }
@@ -138,7 +135,6 @@ function showList(){
   if(whichList == 'stress'){
     console.log("switching to stress list")
 
-    //drawGraph(stress_events)
     drawCards(stress_events, "stress")
     var decisionCards = document.getElementById("decision")
     if (decisionCards != null) {
@@ -153,9 +149,7 @@ function showList(){
   }
   else{
     console.log("switching to decision list")
-    //drawGraph(decision_events)
     drawCards(decision_events, "decision")
-    console.log("drew new cards")
     var stressCards = document.getElementById("stress")
     if (stressCards != null) {
         stressCards.parentNode.removeChild(stressCards)
@@ -173,15 +167,12 @@ function showPastEv(){
   getCookie()
   var ev = null
   var current_type = "Stress"
-  console.log("whichlist in showPastEv:", whichList)
   if(whichList == "stress"){
     ev = stress_events[current_event]
-    console.log("HERE IN STRESS")
   }
   else{
     ev = decision_events[current_event]
     current_type = "Decision"
-    console.log("HERE IN DEC")
   }
   console.log("EV", ev)
   var pastCont = document.getElementById("pastContainer")
@@ -190,11 +181,8 @@ function showPastEv(){
   pastStressType.appendChild(pstText)
   var pastName = document.getElementById("pastFieldName")
   var nameText = document.createTextNode(ev.name)
-  // console.log("NAMETEXT:", nameText)
-  // console.log("PASTNAME:", pastName)
   pastName.appendChild(nameText)
 
-  // console.log("PASTNAME:", pastName)
   var pastStress = document.getElementById("pastFieldStress")
   var stressText= document.createTextNode(ev.stressLevel)
   pastStress.appendChild(stressText)
@@ -285,7 +273,6 @@ function drawGraph() {
     point["y"] = parseInt(decision_events[i].stressLevel)
     decisionPoints.unshift(point)
   }
-  //console.log(points)
   var chart = new CanvasJS.Chart("chartContainer", {
     theme: "theme2",
     title:{
@@ -331,13 +318,11 @@ function drawGraph() {
             }
         }
   });
-  //console.log(chart)
   chart.render();
 }
 
 function addToList(list) {
     if (list == 'stress') {
-        console.log("add to stress_events")
         var type = "Stress"
         var name = document.getElementById("stressName").value
         var stressLevel = document.getElementById("stressRange").value
