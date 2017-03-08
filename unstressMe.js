@@ -48,7 +48,6 @@ decision_events = [
 ]
 
 current_event = 0
-current_type = 'Stress'
 
 whichList = "stress"
 
@@ -93,9 +92,6 @@ function drawCard(ev, i) {
   var row = document.createElement('div')
   row.setAttribute("class", "row")
   row.setAttribute("id", i.toString())
-  // row.setAttribute("onclick", "location.href='showPastEvent.html'")
-  // current_event = i
-  //current_type = ev.type
   row.setAttribute("onclick", "current_event=" + i + "; setCookie(); location.href='showPastEvent.html';")
 
   var rowTime = document.createElement('div')
@@ -172,6 +168,7 @@ function showList(){
 function showPastEv(){
   getCookie()
   var ev = null
+  var current_type = "Stress"
   console.log("whichlist in showPastEv:", whichList)
   if(whichList == "stress"){
     ev = stress_events[current_event]
@@ -179,6 +176,7 @@ function showPastEv(){
   }
   else{
     ev = decision_events[current_event]
+    current_type = "Decision"
     console.log("HERE IN DEC")
   }
   console.log("EV", ev)
