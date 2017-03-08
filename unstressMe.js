@@ -95,7 +95,7 @@ function drawCard(ev, i) {
   row.setAttribute("id", i.toString())
   // row.setAttribute("onclick", "location.href='showPastEvent.html'")
   // current_event = i
-  current_type = ev.type
+  //current_type = ev.type
   row.setAttribute("onclick", "current_event = i; location.href='showPastEvent.html';")
 
   var rowTime = document.createElement('div')
@@ -141,7 +141,9 @@ function showList(){
     drawGraph(stress_events)
     drawCards(stress_events, "stress")
     var decisionCards = document.getElementById("decision")
-    decisionCards.parentNode.removeChild(decisionCards)
+    if (decisionCards != null) {
+        decisionCards.parentNode.removeChild(decisionCards)
+    }
 
     var stressHeader = document.getElementById("stressHeader")
     stressHeader.style.background = "#dcdcdc"
@@ -155,7 +157,9 @@ function showList(){
     drawCards(decision_events, "decision")
     console.log("drew new cards")
     var stressCards = document.getElementById("stress")
-    stressCards.parentNode.removeChild(stressCards)
+    if (stressCards != null) {
+        stressCards.parentNode.removeChild(stressCards)
+    }
 
     var stressHeader = document.getElementById("stressHeader")
     stressHeader.style.background = "#f5f5f5"
