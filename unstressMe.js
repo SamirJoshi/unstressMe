@@ -6,7 +6,7 @@ stress_events = [
     "fact": "I did well",
     "feelings": "I'm happy",
     "fiction": "I'll do well on every test",
-    "productive": "Not really"
+    "productive": "Not really",
     "timestamp": new Date(2017, 1, 28)
   },
   {
@@ -16,7 +16,7 @@ stress_events = [
     "fact": "I have an exciting opportunity",
     "feelings": "I'm nervous and anxious",
     "fiction": "If I don't do well I'll never get a job",
-    "productive" : "Yes - It motivates me prepare more."
+    "productive" : "Yes - It motivates me prepare more.",
     "timestamp": new Date(2017, 1, 27)
   },
   {
@@ -26,7 +26,7 @@ stress_events = [
     "fact": "The test was fine",
     "feelings": "I'm pleased that the test went well",
     "fiction": "I didn't do well compared to other students",
-    "productive": "No"
+    "productive": "No",
     "timestamp": new Date(2017, 1, 26)
   },
 ]
