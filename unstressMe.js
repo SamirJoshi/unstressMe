@@ -281,7 +281,8 @@ function drawGraph(ev_list) {
   var chart = new CanvasJS.Chart("chartContainer", {
     theme: "theme2",
     title:{
-      text: "My Stress History"
+      text: "My Stress History",
+      fontFamily: "sans-serif"
     },
     animationEnabled: true,
     axisX : {
