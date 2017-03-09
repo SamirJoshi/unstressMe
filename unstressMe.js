@@ -221,7 +221,7 @@ function showPastEv(){
     var text3 = document.createTextNode(ev.fiction)
     pastField3.appendChild(text3)
     pastCont.appendChild(pastField3)
-    
+
     var pastField4 = document.createElement('div')
     pastField4.setAttribute("class", "pastField")
     var pastHeader4 = document.createElement('div')
@@ -291,7 +291,7 @@ function drawGraph() {
     },
     data: [
     {
-      type: "line", 
+      type: "line",
       name: "Stress",
       markerType: "circle",
       showInLegend: true,
@@ -319,6 +319,17 @@ function drawGraph() {
         }
   });
   chart.render();
+}
+
+function deleteEvent(){
+  getCookie()
+  console.log("cookie", current_event, ", type", whichList)
+  if(whichList == 'stress'){
+    stress_events.splice(current_event, 1)
+  }
+  else{
+    decision_events.splice(current_event, 1)
+  }
 }
 
 function addToList(list) {
