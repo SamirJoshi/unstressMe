@@ -33,6 +33,29 @@ body{
   cursor: pointer;
 }
 
+.deleteEventButton{
+
+  height: 50px;
+  width: 70px;
+  background-color: #004c5c;
+  border-radius: 25px;
+
+  color: white;
+  text-align: center;
+  line-height: 50px;
+
+  float: right;
+  margin-top: -70px;
+  margin-right: 30px;
+  margin-bottom: 50px;
+  font-family: sans-serif;
+}
+
+.deleteEventButton:hover{
+background-color: #006176;
+cursor: pointer;
+}
+
 .container{
   height: 712px;
   width: 400px;
