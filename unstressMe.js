@@ -368,8 +368,8 @@ function addToList(list) {
         jsonData["type"] = type
         jsonData["name"] = name
         jsonData["stressLevel"] = stressLevel
-        jsonData["pro"] = pro
-        jsonData["con"] = con
+        jsonData["pros"] = pro
+        jsonData["cons"] = con
         jsonData["timestamp"] = timestamp
         getCookie()
         decision_events.unshift(jsonData)
